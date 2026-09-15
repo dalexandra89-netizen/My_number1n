@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1800">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#9edcff"/>
+    <stop offset=".48" stop-color="#d9f2ff"/>
+    <stop offset="1" stop-color="#ffe4b3"/>
+  </linearGradient>
+  <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5a626c"/>
+    <stop offset="1" stop-color="#343940"/>
+  </linearGradient>
+  <linearGradient id="greenL" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#2e7b4f"/>
+    <stop offset="1" stop-color="#6eaa62"/>
+  </linearGradient>
+  <linearGradient id="greenR" x1="1" y1="0" x2="0" y2="0">
+    <stop offset="0" stop-color="#2e7b4f"/>
+    <stop offset="1" stop-color="#6eaa62"/>
+  </linearGradient>
+</defs>
+<rect width="900" height="1800" fill="url(#sky)"/>
+<rect x="0" y="0" width="175" height="1800" fill="url(#greenL)"/>
+<rect x="725" y="0" width="175" height="1800" fill="url(#greenR)"/>
+
+<g opacity=".6" fill="#1d5538">
+  <circle cx="55" cy="130" r="74"/><circle cx="125" cy="270" r="95"/>
+  <circle cx="60" cy="520" r="84"/><circle cx="120" cy="770" r="104"/>
+  <circle cx="58" cy="1040" r="92"/><circle cx="120" cy="1320" r="112"/><circle cx="65" cy="1630" r="100"/>
+  <circle cx="840" cy="140" r="88"/><circle cx="780" cy="340" r="98"/>
+  <circle cx="845" cy="620" r="94"/><circle cx="782" cy="920" r="109"/>
+  <circle cx="842" cy="1230" r="100"/><circle cx="785" cy="1530" r="118"/>
+</g>
+
+<!-- water / skyline hints -->
+<rect x="790" y="70" width="110" height="580" fill="#61b7dd" opacity=".40"/>
+<g fill="#6689b9" opacity=".55">
+  <rect x="770" y="15" width="28" height="130"/><rect x="805" y="0" width="38" height="145"/>
+  <rect x="851" y="38" width="25" height="107"/>
+</g>
+
+<!-- perfectly straight three-lane track -->
+<rect x="175" y="0" width="550" height="1800" rx="0" fill="url(#road)"/>
+<rect x="185" y="0" width="530" height="1800" fill="#ffffff" opacity=".025"/>
+<rect x="165" y="0" width="10" height="1800" fill="#ff4fae" opacity=".65"/>
+<rect x="725" y="0" width="10" height="1800" fill="#6ce5ff" opacity=".65"/>
+<rect x="175" y="0" width="8" height="1800" fill="#ffffff" opacity=".9"/>
+<rect x="717" y="0" width="8" height="1800" fill="#ffffff" opacity=".9"/>
+
+<!-- decorative fixed roadside flowers -->
+<g fill="#ffcf62" opacity=".8">
+  <circle cx="120" cy="430" r="7"/><circle cx="74" cy="820" r="6"/><circle cx="130" cy="1180" r="7"/>
+  <circle cx="777" cy="520" r="7"/><circle cx="835" cy="930" r="6"/><circle cx="790" cy="1420" r="7"/>
+</g>
+</svg>

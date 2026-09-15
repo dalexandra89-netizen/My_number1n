@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#09051e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Детский режим</title>
+<link rel="stylesheet" href="style.css?v=51">
+</head>
+<body>
+<div id="app">
+  <main id="game">
+    <div id="space"></div>
+    <div id="stars"></div>
+    <div id="vignette"></div>
+
+    <header class="hud">
+      <div class="hud-box">
+        <small>ОЧКИ</small>
+        <b id="score">0</b>
+      </div>
+      <div class="hud-box hud-progress">
+        <small>ДО ФИНИША</small>
+        <div class="progress-track"><i id="progress"></i></div>
+      </div>
+      <div class="hud-box">
+        <small>ЖИЗНИ</small>
+        <b id="lives" class="hearts">♥ ♥ ♥</b>
+      </div>
+    </header>
+
+    <div id="toast"></div>
+    <div id="objects"></div>
+    <svg id="web-layer" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+    <div id="fx-layer"></div>
+
+    <div id="hero">
+      <span class="thruster left"></span>
+      <span class="thruster right"></span>
+      <img src="assets/hero_back.png?v=50" alt="">
+      <span class="damage-scratch"></span>
+    </div>
+
+    <button class="move-zone move-left" data-dir="-1" aria-label="Влево"></button>
+    <button class="move-zone move-right" data-dir="1" aria-label="Вправо"></button>
+    <div class="nav-hint left">‹</div>
+    <div class="nav-hint right">›</div>
+
+    <section id="start" class="overlay show">
+      <div class="panel">
+        <span class="eyebrow">ДЕТСКИЙ РЕЖИМ</span>
+        <h1>Детский режим</h1>
+        <p>Лети по маршруту, собирай хорошие карточки и останавливай плохие паутиной.</p>
+        <div class="rules">
+          <div><b>← →</b><span>тап слева/справа — сменить полосу</span></div>
+          <div><b>◎</b><span>тап по плохой карточке — выстрелить</span></div>
+        </div>
+        <button class="cta" id="start-btn">НАЧАТЬ</button>
+      </div>
+    </section>
+
+    <section id="finish" class="overlay">
+      <div class="panel">
+        <span class="eyebrow">ФИНИШ</span>
+        <h2 id="result-title">Миссия выполнена!</h2>
+        <div class="results">
+          <div><small>Очки</small><b id="final-score">0</b></div>
+          <div><small>Собрано</small><b id="final-good">0</b></div>
+          <div><small>Остановлено</small><b id="final-bad">0</b></div>
+        </div>
+        <button class="cta" id="again-btn">ИГРАТЬ ЕЩЁ</button>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="rotate-guard" aria-hidden="true">
+  <div>
+    <div class="icon">📱↻</div>
+    <b>Поверните телефон</b>
+    <p>Игра работает в вертикальной ориентации</p>
+  </div>
+</div>
+<script src="game.js?v=51"></script>
+</body>
+</html>

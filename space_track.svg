@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1800">
+<defs>
+  <linearGradient id="space" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#060a27"/>
+    <stop offset=".45" stop-color="#111149"/>
+    <stop offset="1" stop-color="#09041c"/>
+  </linearGradient>
+  <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#1d2f78"/>
+    <stop offset=".55" stop-color="#181c59"/>
+    <stop offset="1" stop-color="#321052"/>
+  </linearGradient>
+  <radialGradient id="glow" cx=".5" cy=".25" r=".75">
+    <stop offset="0" stop-color="#6a3cff" stop-opacity=".34"/>
+    <stop offset=".5" stop-color="#0e2ea1" stop-opacity=".10"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="6"/></filter>
+  <pattern id="stars" width="90" height="90" patternUnits="userSpaceOnUse">
+    <circle cx="15" cy="18" r="1.3" fill="#fff" opacity=".8"/>
+    <circle cx="62" cy="35" r="1" fill="#8be8ff" opacity=".75"/>
+    <circle cx="38" cy="72" r="1.1" fill="#ff7ce4" opacity=".7"/>
+    <circle cx="80" cy="78" r=".8" fill="#fff" opacity=".6"/>
+  </pattern>
+</defs>
+
+<rect width="900" height="1800" fill="url(#space)"/>
+<rect width="900" height="1800" fill="url(#stars)" opacity=".95"/>
+<rect width="900" height="1800" fill="url(#glow)"/>
+
+<!-- nebula -->
+<g opacity=".6" filter="url(#blur)">
+  <ellipse cx="125" cy="380" rx="250" ry="150" fill="#6c2ee8"/>
+  <ellipse cx="780" cy="240" rx="220" ry="145" fill="#225eff"/>
+  <ellipse cx="760" cy="1080" rx="270" ry="190" fill="#c02ab3"/>
+  <ellipse cx="90" cy="1380" rx="260" ry="180" fill="#173bba"/>
+</g>
+
+<!-- planets -->
+<g opacity=".9">
+  <circle cx="95" cy="180" r="70" fill="#5730a5"/>
+  <circle cx="95" cy="180" r="55" fill="#7347d1" opacity=".65"/>
+  <ellipse cx="790" cy="275" rx="85" ry="30" fill="none" stroke="#ef8fff" stroke-width="7" opacity=".7"/>
+  <circle cx="790" cy="275" r="58" fill="#2d59ac"/>
+  <circle cx="790" cy="275" r="45" fill="#4178cc" opacity=".7"/>
+</g>
+
+<!-- asteroids -->
+<g fill="#2a2141" stroke="#6a5a8f" stroke-width="4" opacity=".85">
+  <path d="M85 560 l32-28 40 14 14 34-30 28-45-8z"/>
+  <path d="M780 630 l28-22 35 12 8 30-25 22-38-6z"/>
+  <path d="M110 1120 l24-18 31 8 9 28-23 25-35-7z"/>
+  <path d="M805 1320 l31-24 34 14 8 27-24 25-38-8z"/>
+</g>
+
+<!-- route -->
+<polygon points="300,0 600,0 775,1800 125,1800" fill="url(#road)" opacity=".93"/>
+<polygon points="318,0 582,0 720,1800 180,1800" fill="#101949" opacity=".45"/>
+
+<!-- glowing edge rails -->
+<path d="M298 0 L120 1800" stroke="#6feaff" stroke-width="14" opacity=".8"/>
+<path d="M602 0 L780 1800" stroke="#fa42d0" stroke-width="14" opacity=".8"/>
+<path d="M305 0 L134 1800" stroke="#ffffff" stroke-width="4" opacity=".55"/>
+<path d="M595 0 L766 1800" stroke="#ffffff" stroke-width="4" opacity=".55"/>
+
+<!-- lane separators -->
+<g stroke="#78cfff" stroke-width="7" opacity=".65" stroke-linecap="round" stroke-dasharray="40 70">
+  <path d="M400 0 L360 1800"/>
+  <path d="M500 0 L540 1800"/>
+</g>
+
+<!-- boost arrows -->
+<g fill="#a9d6ff" opacity=".78">
+  <path d="M435 360 l15-20 15 20 -8 0 0 26 -14 0 0-26z"/>
+  <path d="M435 420 l15-20 15 20 -8 0 0 26 -14 0 0-26z"/>
+  <path d="M435 480 l15-20 15 20 -8 0 0 26 -14 0 0-26z"/>
+</g>
+
+<!-- energy streaks -->
+<g stroke-linecap="round">
+  <path d="M220 200 L170 480" stroke="#ff52db" stroke-width="5" opacity=".5"/>
+  <path d="M685 420 L735 760" stroke="#57dfff" stroke-width="5" opacity=".5"/>
+  <path d="M210 1080 L150 1490" stroke="#57dfff" stroke-width="4" opacity=".5"/>
+  <path d="M690 1160 L750 1560" stroke="#ff52db" stroke-width="4" opacity=".5"/>
+</g>
+</svg>
