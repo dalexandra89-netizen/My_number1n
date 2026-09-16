@@ -6,8 +6,15 @@ button{-webkit-tap-highlight-color:transparent}
 #app{width:min(100vw,560px);height:100dvh;overflow:hidden;background:#05030d}
 #game{position:relative;width:100%;height:100%;overflow:hidden;isolation:isolate;background:#09051e}
 
-#space{position:absolute;inset:-10% -4%;background-image:url("assets/space_track.svg");background-repeat:repeat-y;background-size:100% var(--tile-h,1200px);background-position:center 0;animation:spaceScroll var(--scroll-dur,4.5s) linear infinite;transform:scale(1.04) translateZ(0);filter:saturate(1.05);will-change:background-position}
-#stars{position:absolute;inset:-10% -4%;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:.6;animation:starsTwinkle 3.6s ease-in-out infinite;background-image:
+#space{position:absolute;inset:-10% -4%;background:url("assets/space_track.svg?v=2") center/cover no-repeat;transform:scale(1.04);filter:saturate(1.05)}
+
+#lanes{position:absolute;inset:-6% 0;z-index:1;pointer-events:none;overflow:hidden}
+#lanes i{position:absolute;top:0;bottom:0;width:.8%;border-radius:8px;opacity:.68;box-shadow:0 0 10px rgba(120,207,255,.55);background:repeating-linear-gradient(180deg,#78cfff 0 16px,transparent 16px 42px);animation:laneScroll .8s linear infinite;transform:translateX(-50%)}
+#lanes i:first-child{left:37.25%}
+#lanes i:last-child{left:62.75%}
+@keyframes laneScroll{to{background-position-y:42px}}
+
+#stars{position:absolute;inset:-10% -4%;z-index:2;pointer-events:none;mix-blend-mode:screen;opacity:.6;animation:starsTwinkle 3.6s ease-in-out infinite;background-image:
   radial-gradient(1.6px 1.6px at 18% 22%,rgba(255,255,255,.95) 0,transparent 60%),
   radial-gradient(1.1px 1.1px at 68% 12%,rgba(255,255,255,.75) 0,transparent 60%),
   radial-gradient(1.6px 1.6px at 38% 66%,rgba(255,255,255,.85) 0,transparent 60%),
@@ -17,8 +24,7 @@ button{-webkit-tap-highlight-color:transparent}
   radial-gradient(1.3px 1.3px at 92% 30%,rgba(255,255,255,.7) 0,transparent 60%);
   background-size:230px 260px}
 @keyframes starsTwinkle{0%,100%{opacity:.38}50%{opacity:.72}}
-#vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(2,2,11,.05),transparent 40%,rgba(2,2,11,.28))}
-@keyframes spaceScroll{to{background-position:center var(--tile-h,1200px)}}
+#vignette{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(2,2,11,.05),transparent 40%,rgba(2,2,11,.28))}
 
 .hud{position:absolute;z-index:40;top:max(9px,env(safe-area-inset-top));left:8px;right:8px;display:grid;grid-template-columns:.82fr 1.3fr 1fr;gap:6px}
 .hud-box{background:rgba(8,10,34,.77);color:white;border:1px solid rgba(140,203,255,.42);border-radius:15px;padding:7px 9px;box-shadow:0 6px 18px rgba(0,0,0,.3),0 0 22px rgba(112,69,255,.14);backdrop-filter:blur(8px)}
@@ -29,7 +35,7 @@ button{-webkit-tap-highlight-color:transparent}
 .progress-track i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ff75bf,#b645ff,#61dfff);box-shadow:0 0 12px rgba(97,223,255,.5)}
 
 #objects{position:absolute;inset:0;z-index:12}
-.card{position:absolute;width:23.5%;aspect-ratio:.54;transform:translate(-50%,calc(var(--cy,0px) - 50%));border-radius:15px;overflow:hidden;background:white;box-shadow:0 9px 22px rgba(0,0,0,.38);will-change:transform;user-select:none}
+.card{position:absolute;width:23.5%;aspect-ratio:.78;transform:translate(-50%,calc(var(--cy,0px) - 50%));border-radius:15px;overflow:hidden;background:white;box-shadow:0 9px 22px rgba(0,0,0,.38);will-change:transform;user-select:none}
 .card img{width:100%;height:100%;object-fit:cover;display:block}
 .card::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.67);border-radius:15px;pointer-events:none}
 .card.good{box-shadow:0 0 0 2px rgba(62,224,141,.58),0 0 16px rgba(62,224,141,.18),0 9px 22px rgba(0,0,0,.38)}

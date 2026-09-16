@@ -13,31 +13,38 @@ const CFG = {
   crashPenalty: 120
 };
 
-const GOOD = Array.from({length:5},(_,i)=>`assets/good_${String(i+1).padStart(2,"0")}.jpg`);
-const BAD  = Array.from({length:5},(_,i)=>`assets/bad_${String(i+1).padStart(2,"0")}.jpg`);
+const GOOD = Array.from({length:8},(_,i)=>`assets/good_${String(i+1).padStart(2,"0")}.jpg`);
+const BAD  = Array.from({length:10},(_,i)=>`assets/bad_${String(i+1).padStart(2,"0")}.jpg`);
 
 const LEVEL = [
-  {t:1.2,l:1,k:"good",i:0},{t:3.0,l:0,k:"good",i:1},{t:4.8,l:2,k:"bad",i:0},
-  {t:6.7,l:1,k:"bad",i:1},{t:8.5,l:2,k:"good",i:2},{t:10.4,l:0,k:"bad",i:2},
-  {t:12.1,l:1,k:"good",i:3},
+  {t:1.2,l:1,k:"good",i:0},{t:1.2,l:0,k:"bad",i:5},
+  {t:3.0,l:0,k:"good",i:1},{t:3.0,l:2,k:"bad",i:6},
+  {t:4.8,l:2,k:"bad",i:0},{t:4.8,l:0,k:"good",i:5},
+  {t:6.7,l:1,k:"bad",i:1},{t:6.7,l:2,k:"bad",i:7},
+  {t:8.5,l:2,k:"good",i:2},{t:8.5,l:1,k:"good",i:6},
+  {t:10.4,l:0,k:"bad",i:2},{t:10.4,l:2,k:"bad",i:8},
+  {t:12.1,l:1,k:"good",i:3},{t:12.1,l:0,k:"good",i:7},
 
   {t:14.0,l:0,k:"good",i:4},{t:14.0,l:2,k:"bad",i:3},
   {t:16.4,l:0,k:"bad",i:4},{t:16.4,l:1,k:"good",i:0},
   {t:19.0,l:2,k:"good",i:1},{t:19.0,l:1,k:"bad",i:0},
 
   {t:21.8,l:0,k:"good",i:2},{t:21.8,l:2,k:"good",i:3},
-  {t:24.0,l:1,k:"bad",i:1},{t:26.0,l:0,k:"bad",i:2},{t:26.0,l:2,k:"good",i:4},
-  {t:28.2,l:1,k:"good",i:0},
+  {t:24.0,l:1,k:"bad",i:1},{t:24.0,l:2,k:"bad",i:9},
+  {t:26.0,l:0,k:"bad",i:2},{t:26.0,l:2,k:"good",i:4},
+  {t:28.2,l:1,k:"good",i:0},{t:28.2,l:0,k:"bad",i:6},
 
   {t:30.7,l:0,k:"bad",i:3},{t:30.7,l:1,k:"good",i:1},{t:30.7,l:2,k:"bad",i:4},
   {t:33.5,l:0,k:"good",i:2},{t:33.5,l:2,k:"good",i:3},{t:35.8,l:1,k:"bad",i:0},
+  {t:35.8,l:2,k:"good",i:7},
 
   {t:38.2,l:0,k:"bad",i:1},{t:38.2,l:2,k:"good",i:4},
-  {t:40.3,l:1,k:"good",i:0},{t:41.3,l:0,k:"good",i:3},{t:41.3,l:2,k:"bad",i:2}
+  {t:40.3,l:1,k:"good",i:0},{t:40.3,l:0,k:"bad",i:9},
+  {t:41.3,l:0,k:"good",i:3},{t:41.3,l:2,k:"bad",i:2},
+  {t:43.0,l:1,k:"bad",i:8}
 ];
 
 const game = document.querySelector("#game");
-const spaceEl = document.querySelector("#space");
 const objectsRoot = document.querySelector("#objects");
 const hero = document.querySelector("#hero");
 const webLayer = document.querySelector("#web-layer");
@@ -56,13 +63,6 @@ let gameRect={w:0,h:0};
 function syncGameRect(){
   const r=game.getBoundingClientRect();
   gameRect.w=r.width;gameRect.h=r.height;
-}
-function syncSpaceTile(){
-  const w=spaceEl.getBoundingClientRect().width||1;
-  const tile=Math.round(w*2);
-  const speedPxPerSec=210;
-  spaceEl.style.setProperty("--tile-h",`${tile}px`);
-  spaceEl.style.setProperty("--scroll-dur",`${(tile/speedPxPerSec).toFixed(2)}s`);
 }
 function heroOffsetPx(l){
   return ((CFG.laneX[l]-50)/100)*gameRect.w;
@@ -93,7 +93,6 @@ function reset(){
   fxLayer.innerHTML = "";
   lane=1;score=0;lives=CFG.lives;goodCount=0;badCount=0;nextIndex=0;lastFrame=0;
   syncGameRect();
-  syncSpaceTile();
   hero.className = "";
   setHeroX();
   progressEl.style.width = "0%";
@@ -112,7 +111,8 @@ function move(dir){
 function spawn(spec){
   const el=document.createElement("div");
   el.className=`card ${spec.k}`;
-  const src=(spec.k==="good"?GOOD:BAD)[spec.i%5];
+  const pool=spec.k==="good"?GOOD:BAD;
+  const src=pool[spec.i%pool.length];
   el.innerHTML=`<img src="${src}" alt=""><span class="${spec.k==="good"?"good-dot":"bad-dot"}">${spec.k==="good"?"✓":"!"}</span>`;
   el.style.left=`${CFG.laneX[spec.l]}%`;
   objectsRoot.appendChild(el);
@@ -267,11 +267,9 @@ addEventListener("keydown",e=>{
 document.addEventListener("visibilitychange",()=>{if(document.hidden&&playing)finish()});
 addEventListener("resize",()=>{
   syncGameRect();
-  syncSpaceTile();
   if(playing)setHeroX();
 });
 syncGameRect();
-syncSpaceTile();
 setHeroX();
 renderHud();
 })();
