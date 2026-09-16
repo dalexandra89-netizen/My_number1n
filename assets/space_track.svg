@@ -63,11 +63,6 @@
 <path d="M305 0 L134 1800" stroke="#ffffff" stroke-width="4" opacity=".55"/>
 <path d="M595 0 L766 1800" stroke="#ffffff" stroke-width="4" opacity=".55"/>
 
-<!-- lane separators -->
-<g stroke="#78cfff" stroke-width="7" opacity=".65" stroke-linecap="round" stroke-dasharray="40 70">
-  <path d="M400 0 L360 1800"/>
-  <path d="M500 0 L540 1800"/>
-</g>
 
 <!-- boost arrows -->
 <g fill="#a9d6ff" opacity=".78">
